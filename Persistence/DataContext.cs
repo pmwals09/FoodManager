@@ -10,5 +10,8 @@ namespace Persistence
     }
 
     public DbSet<Recipe> Recipes { get; set; }
+    public DbSet<FoodItem> FoodItems { get; set; }
+    public DbSet<Ingredient> Ingredients { get; set; }
+
   }
 }
