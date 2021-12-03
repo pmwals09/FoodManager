@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Persistence;
 
 namespace Persistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20211130014034_AddShoppingListAndItems")]
+    partial class AddShoppingListAndItems
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -77,23 +79,6 @@ namespace Persistence.Migrations
                     b.ToTable("Ingredients");
                 });
 
-            modelBuilder.Entity("Domain.Menu", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("WeekLength")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("WeekStartingDate")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Menus");
-                });
-
             modelBuilder.Entity("Domain.Recipe", b =>
                 {
                     b.Property<Guid>("Id")
@@ -118,49 +103,6 @@ namespace Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Recipes");
-                });
-
-            modelBuilder.Entity("Domain.ShoppingList", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("MenuId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Notes")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("WeekLength")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("WeekStartingDate")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ShoppingLists");
-                });
-
-            modelBuilder.Entity("Domain.ShoppingListItem", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("FoodItemId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<double>("Quantity")
-                        .HasColumnType("REAL");
-
-                    b.Property<Guid>("ShoppingListId")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ShoppingListItems");
                 });
 #pragma warning restore 612, 618
         }

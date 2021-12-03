@@ -10,5 +10,6 @@ namespace Domain
         public int Servings { get; set; }
         public string Description { get; set; }
         public string Directions { get; set; }
+        public Guid MenuId { get; set; }
     }
 }
